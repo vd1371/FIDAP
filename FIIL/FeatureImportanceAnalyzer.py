@@ -6,8 +6,10 @@ class FeatureImportanceAnalyzer:
 		self.model = model
 		self.X = X_test
 		self.Y = Y_test
-		pass
+
+		self.n_simulations = params.get("'n_simulations", 100)
 
 	def get(self):
 		self.features_importance = get_features_importance(**self.__dict__)
+		return self.features_importance
 
