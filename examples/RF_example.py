@@ -3,26 +3,17 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, accuracy_score
-
+from sklearn import datasets
 from FIIL import FeatureImportanceAnalyzer
 
 
 def RF_example():
     # iris dataset
-    path = "./examples/iris.data"
-
-    # column names
-    headernames = ["sepal-length", "sepal-width", 
-                    "petal-length", "petal-width",
-                    "Class"]
-
-    # read dataset
-    dataset = pd.read_csv(path, names = headernames)
-    dataset.head()
+    iris = datasets.load_iris()
 
     # pre process
-    X = dataset.iloc[:, :-1].values
-    y = dataset.iloc[:, 4].values
+    X = iris.data[:, :]
+    y = iris.target
 
     # creating train and test datasets (70% train, 30% test)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size =0.30)
