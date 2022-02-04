@@ -1,6 +1,8 @@
 import numpy as np
+from sklearn.metrics import accuracy_score
 
-def _get_features_imporatnce_for_DNN_RE(**params):
+
+def _get_features_imporatnce_for_KNN_CL(**params):
 
 	X = params.get("X")
 	Y_true = params.get("Y")
@@ -10,7 +12,7 @@ def _get_features_imporatnce_for_DNN_RE(**params):
 	# features = _get_features_from_data(x)
 	features = [f"X{i}" for i in range(X.shape[1])]
 
-	initial_metric = model.evaluate(X, Y_true, verbose=0)
+	initial_metric = accuracy_score(model.predict(X), Y_true)
 
 	feature_importances_ = {}
 	for i, feature in enumerate(features):
@@ -22,9 +24,8 @@ def _get_features_imporatnce_for_DNN_RE(**params):
 
 			np.random.shuffle(X_temp[:,i])
 
-			new_metric = model.evaluate(X_temp, Y_true, verbose=0)
-
-			metric_temp = initial_metric - new_metric
+			y_pred = model.predict(X_temp)
+			metric_temp = initial_metric - accuracy_score(y_pred, Y_true)
 
 			temp_metric_list.append(metric_temp)
 
