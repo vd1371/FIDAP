@@ -8,22 +8,25 @@ from FIIL import FeatureImportanceAnalyzer
 
 
 def RF_example():
-    # iris dataset
+
+    # Loading iris dataset
     iris = datasets.load_iris()
 
-    # pre process
+    # Pre process
     X = iris.data[:, :]
     y = iris.target
 
-    # creating train and test datasets (70% train, 30% test)
+    # Creating train and test datasets (70% train, 30% test)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size =0.30)
+
+    # Define model
     classifier = RandomForestClassifier(n_estimators = 50)
     classifier.fit(X_train, y_train)
 
-    # predict
+    # Predict
     y_pred = classifier.predict(X_test)
 
-    # outputs
+    # Outputs
     report = classification_report(y_test, y_pred)
     print ("Classification report", report)
 
@@ -31,7 +34,6 @@ def RF_example():
     print ("Accuracy score", accuracy)
 
     # calculating feature importance
-
     n_features = X_train.shape[1]
     n_simulations = 10
 

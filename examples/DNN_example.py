@@ -4,49 +4,47 @@ from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_boston
 from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Dense
+from FIIL import FeatureImportanceAnalyzer
 
-# load the dataset
-X, y = load_boston(return_X_y=True)
 
-# split into train and test datasets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33)
+def DNN_example():
 
-# determine the number of input features
-n_features = X_train.shape[1]
+    # Loading boston dataset
+    X, y = load_boston(return_X_y=True)
 
-# define model
-model = Sequential()
-model.add(Dense(10, activation='relu', kernel_initializer='he_normal', 
-                input_shape=(n_features,)))
-model.add(Dense(8, activation='relu', kernel_initializer='he_normal'))
-model.add(Dense(1))
+    # Creating train and test datasets (70% train, 30% test)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30)
 
-# compile the model
-model.compile(optimizer='adam', loss='mse')
+    # Determine the number of input features
+    n_features = X_train.shape[1]
 
-# fit the model
-model.fit(X_train, y_train, epochs=150, batch_size=32, verbose=0)
+    # Define model
+    classifier = Sequential()
+    classifier.add(Dense(10, activation='relu', kernel_initializer='he_normal', 
+                    input_shape=(n_features,)))
+    classifier.add(Dense(8, activation='relu', kernel_initializer='he_normal'))
+    classifier.add(Dense(1))
 
-# evaluate the model
-error = model.evaluate(X_test, y_test, verbose=0)
-print('MSE: %.3f, RMSE: %.3f' % (error, np.sqrt(error)))
+    # Compile the model
+    classifier.compile(optimizer='adam', loss='mse')
 
-# make a prediction
-row = [0.00632,18.00,2.310,0,0.5380,6.5750,
-       65.20,4.0900,1,296.0,15.30,396.90,4.98]
-yhat = model.predict([row])
-print('Predicted: %.3f' % yhat)
+    # Fit the model
+    classifier.fit(X_train, y_train, epochs=150, batch_size=32, verbose=0)
 
-# calculating feature importance
-n_simulations = 10
-feature_importances_ = []
-for i in range (n_features):
-    X_temp = X_test.copy()
-    temp_error_list = []
-    for j in range (n_simulations):
-        np.random.shuffle(X_temp[:,i])
-        error_temp = error - model.evaluate(X_temp, y_test, verbose=0)
-        temp_error_list.append(error_temp)
-    feature_importances_.append(abs(round(np.mean(temp_error_list), 4)) if np.mean(temp_error_list)<0 else 0)
+    # Evaluate the model
+    error = classifier.evaluate(X_test, y_test, verbose=0)
+    print('MSE: %.3f, RMSE: %.3f' % (error, np.sqrt(error)))
 
-print (feature_importances_)
+    # Making a prediction
+    #row = [0.00632,18.00,2.310,0,0.5380,6.5750,
+           #65.20,4.0900,1,296.0,15.30,396.90,4.98]
+    #yhat = classifier.predict([row])
+    #print('Predicted: %.3f' % yhat)
+
+    # Calculating feature importance
+    n_simulations = 10
+
+    fiil = FeatureImportanceAnalyzer(classifier, X_test, y_test)
+    print (fiil.get())
+
+    feature_importances_ = []
