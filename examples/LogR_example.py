@@ -1,26 +1,32 @@
 import numpy as np
 import pandas as pd
-from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, accuracy_score
 from FIIL import FeatureImportanceAnalyzer
 
-def KNN_example():
-	# Loading iris dataset
-	iris = load_iris()
-	X = iris.data
-	y = iris.target
+def LogR_example():
+
+	# Loading Pima Indians Diabetes Dataset
+	path = "https://raw.githubusercontent.com/npradaschnor/Pima-Indians-Diabetes-Dataset/master/diabetes.csv"
+	pima = pd.read_csv(path)
+	pima.head()
+
+
+	X = pima.iloc[: , :-1].values
+	y = pima.iloc[: , -1].values
 
 	# Creating train and test datasets (70% train, 30% test)
-	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size =0.30)
+	X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.30)
+
 
 	# Define model
-	classifier = KNeighborsClassifier(n_neighbors = 10)
+	classifier = LogisticRegression()
 	classifier.fit(X_train,y_train)
 
 	# Predict
 	y_pred = classifier.predict(X_test)
+
 
 	# Outputs
 	report = classification_report(y_test, y_pred)
@@ -28,7 +34,7 @@ def KNN_example():
 
 	accuracy = accuracy_score(y_test, y_pred)
 	print ("Accuracy score", accuracy)
-	
+
 	# calculating feature importance
 	n_features = X_train.shape[1]
 	n_simulations = 10
