@@ -4,6 +4,7 @@ from examples import KNN_example
 from examples import LogR_example
 from examples import SVM_example
 from examples import MLP_example
+from examples import DT_example
 
 def run():
 	#RF_example()
@@ -11,7 +12,8 @@ def run():
 	#KNN_example()
 	#LogR_example()
 	#SVM_example()
-	MLP_example()
+	#MLP_example()
+	DT_example()
 
 
 if __name__ == "__main__":

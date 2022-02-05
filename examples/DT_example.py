@@ -1,23 +1,27 @@
-from sklearn import datasets
+import numpy as np
+import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn import svm
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import classification_report, accuracy_score
 from FIIL import FeatureImportanceAnalyzer
 
-def SVM_example():
+def DT_example():
 
-	# Loading iris dataset
-	cancer = datasets.load_breast_cancer()
+	# Loading Pima Indians Diabetes Dataset
+	path_part1 = "https://raw.githubusercontent.com/npradaschnor/"
+	path_part2 = "Pima-Indians-Diabetes-Dataset/master/diabetes.csv"
+	path = path_part1 + path_part2
+	pima = pd.read_csv(path)
+	pima.head()
 
-	X = cancer.data
-	y = cancer.target
+	X = pima.iloc[: , :-1].values
+	y = pima.iloc[: , -1].values
 
 	# Creating train and test datasets (70% train, 30% test)
 	X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.30)
 
-
 	# Define model
-	classifier = svm.SVC(kernel='linear') # Linear Kernel
+	classifier = DecisionTreeClassifier()
 	classifier.fit(X_train,y_train)
 
 	# Predict
