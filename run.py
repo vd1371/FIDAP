@@ -7,9 +7,9 @@ from examples import SVM_example
 def run():
 	#RF_example()
 	#DNN_example()
-    #KNN_example()
-    #LogR_example()
-    SVM_example()
+	#KNN_example()
+	#LogR_example()
+	SVM_example()
 
 
 if __name__ == "__main__":
