@@ -6,7 +6,6 @@ from sklearn.metrics import classification_report, accuracy_score
 from sklearn import datasets
 from FIIL import FeatureImportanceAnalyzer
 
-
 def RF_example():
 
     # Loading iris dataset

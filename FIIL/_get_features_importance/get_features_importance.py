@@ -6,6 +6,7 @@ from ._get_features_imporatnce_for_DNN_RE import _get_features_imporatnce_for_DN
 from ._get_features_imporatnce_for_KNN_CL import _get_features_imporatnce_for_KNN_CL
 from ._get_features_imporatnce_for_LogR_CL import _get_features_imporatnce_for_LogR_CL
 from ._get_features_imporatnce_for_SVM_CL import _get_features_imporatnce_for_SVM_CL
+from ._get_features_imporatnce_for_MLP_CL import _get_features_imporatnce_for_MLP_CL
 
 def get_features_importance(**params):
 
@@ -21,3 +22,5 @@ def get_features_importance(**params):
 		return _get_features_imporatnce_for_LogR_CL(**params)
 	elif isinstance(model, sklearn.svm._classes.SVC):
 		return _get_features_imporatnce_for_SVM_CL(**params)
+	elif isinstance(model, sklearn.neural_network._multilayer_perceptron.MLPClassifier):
+		return _get_features_imporatnce_for_MLP_CL(**params)

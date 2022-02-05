@@ -1,11 +1,11 @@
 import numpy as np
 import pandas as pd
+from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, accuracy_score
 from FIIL import FeatureImportanceAnalyzer
 
-def LogR_example():
+def MLP_example():
 
 	# Loading Pima Indians Diabetes Dataset
 	path_part1 = "https://raw.githubusercontent.com/npradaschnor/"
@@ -21,7 +21,8 @@ def LogR_example():
 	X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.30)
 
 	# Define model
-	classifier = LogisticRegression()
+	classifier = MLPClassifier(hidden_layer_sizes=(8,8,8), 
+	                           activation='relu', solver='adam', max_iter=1000)
 	classifier.fit(X_train,y_train)
 
 	# Predict
