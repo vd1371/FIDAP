@@ -5,3 +5,4 @@ from .LogR_example import LogR_example
 from .SVM_example import SVM_example
 from .MLP_example import MLP_example
 from .DT_example import DT_example
+from .NB_example import NB_example
