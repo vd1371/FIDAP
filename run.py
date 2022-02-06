@@ -6,6 +6,7 @@ from examples import SVM_example
 from examples import MLP_example
 from examples import DT_example
 from examples import NB_example
+from examples import DTR_example
 
 def run():
 	#RF_example()
@@ -15,7 +16,8 @@ def run():
 	#SVM_example()
 	#MLP_example()
 	#DT_example()
-	NB_example()
+	#NB_example()
+	DTR_example()
 
 
 if __name__ == "__main__":
