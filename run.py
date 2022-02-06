@@ -8,6 +8,7 @@ from examples import DT_example
 from examples import NB_example
 from examples import DTR_example
 from examples import ET_example
+from examples import ETR_example
 
 def run():
 	#RF_example()
@@ -19,7 +20,8 @@ def run():
 	#DT_example()
 	#NB_example()
 	#DTR_example()
-	ET_example()
+	#ET_example()
+	ETR_example()
 
 
 if __name__ == "__main__":
