@@ -10,6 +10,7 @@ from ._get_features_imporatnce_for_MLP_CL import _get_features_imporatnce_for_ML
 from ._get_features_imporatnce_for_DT_CL import _get_features_imporatnce_for_DT_CL
 from ._get_features_imporatnce_for_NB_CL import _get_features_imporatnce_for_NB_CL
 from ._get_features_imporatnce_for_DT_RE import _get_features_imporatnce_for_DT_RE
+from ._get_features_imporatnce_for_ET_CL import _get_features_imporatnce_for_ET_CL
 
 def get_features_importance(**params):
 
@@ -33,3 +34,5 @@ def get_features_importance(**params):
 		return _get_features_imporatnce_for_NB_CL(**params)
 	elif isinstance(model, sklearn.tree._classes.DecisionTreeRegressor):
 		return _get_features_imporatnce_for_DT_RE(**params)
+	elif isinstance(model, sklearn.ensemble._forest.ExtraTreesClassifier):
+		return _get_features_imporatnce_for_ET_CL(**params)

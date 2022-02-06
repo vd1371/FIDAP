@@ -7,6 +7,7 @@ from examples import MLP_example
 from examples import DT_example
 from examples import NB_example
 from examples import DTR_example
+from examples import ET_example
 
 def run():
 	#RF_example()
@@ -17,7 +18,8 @@ def run():
 	#MLP_example()
 	#DT_example()
 	#NB_example()
-	DTR_example()
+	#DTR_example()
+	ET_example()
 
 
 if __name__ == "__main__":
