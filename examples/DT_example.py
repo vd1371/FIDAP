@@ -8,8 +8,7 @@ from FIIL import FeatureImportanceAnalyzer
 def DT_example():
 
 	# Loading Pima Indians Diabetes Dataset
-	path = "https://raw.githubusercontent.com/npradaschnor/" \
-			"Pima-Indians-Diabetes-Dataset/master/diabetes.csv"
+	path = "Pima.csv"
 	pima = pd.read_csv(path)
 	pima.head()
 
@@ -37,7 +36,7 @@ def DT_example():
 	n_features = X_train.shape[1]
 	n_simulations = 10
 
-	fiil = FeatureImportanceAnalyzer(classifier, X_test, y_test)
+	fiil = FeatureImportanceAnalyzer(classifier, pima)
 	print (fiil.get())
 
 	feature_importances_ = []
