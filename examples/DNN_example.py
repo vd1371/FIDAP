@@ -9,8 +9,15 @@ from FIIL import FeatureImportanceAnalyzer
 
 def DNN_example():
 
-    # Loading boston dataset
-    X, y = load_boston(return_X_y=True)
+    # Loading Boston Dataset
+    path = "https://raw.githubusercontent.com/selva86/datasets/" \
+            "master/BostonHousing.csv"
+    file = pd.read_csv(path)
+
+    X = file.iloc[: , :-1].values
+    y = file.iloc[: , -1].values
+
+    #X, y = load_boston(return_X_y=True)
 
     # Creating train and test datasets (70% train, 30% test)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30)
@@ -44,7 +51,5 @@ def DNN_example():
     # Calculating feature importance
     n_simulations = 10
 
-    fiil = FeatureImportanceAnalyzer(classifier, X_test, y_test)
+    fiil = FeatureImportanceAnalyzer(classifier, file)
     print (fiil.get())
-
-    feature_importances_ = []

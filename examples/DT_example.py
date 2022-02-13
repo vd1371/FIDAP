@@ -8,12 +8,13 @@ from FIIL import FeatureImportanceAnalyzer
 def DT_example():
 
 	# Loading Pima Indians Diabetes Dataset
-	path = "Pima.csv"
-	pima = pd.read_csv(path)
-	pima.head()
+	path = "https://raw.githubusercontent.com/npradaschnor/" \
+			"Pima-Indians-Diabetes-Dataset/master/diabetes.csv"
+	file = pd.read_csv(path)
+	file.head()
 
-	X = pima.iloc[: , :-1].values
-	y = pima.iloc[: , -1].values
+	X = file.iloc[: , :-1].values
+	y = file.iloc[: , -1].values
 
 	# Creating train and test datasets (70% train, 30% test)
 	X_train, X_test, y_train, y_test = train_test_split(X, y,test_size=0.30)
@@ -36,7 +37,5 @@ def DT_example():
 	n_features = X_train.shape[1]
 	n_simulations = 10
 
-	fiil = FeatureImportanceAnalyzer(classifier, pima)
+	fiil = FeatureImportanceAnalyzer(classifier, file)
 	print (fiil.get())
-
-	feature_importances_ = []

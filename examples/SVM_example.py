@@ -1,3 +1,5 @@
+import numpy as np
+import pandas as pd
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn import svm
@@ -6,11 +8,19 @@ from FIIL import FeatureImportanceAnalyzer
 
 def SVM_example():
 
-	# Loading iris dataset
-	cancer = datasets.load_breast_cancer()
+	# Loading Pima Indians Diabetes Dataset
+	#cancer = datasets.load_breast_cancer()
+	path = "https://raw.githubusercontent.com/npradaschnor/" \
+			"Pima-Indians-Diabetes-Dataset/master/diabetes.csv"
 
-	X = cancer.data
-	y = cancer.target
+	file = pd.read_csv(path)
+	file.head()
+
+	X = file.iloc[: , :-1].values
+	y = file.iloc[: , -1].values
+
+	#X = cancer.data
+	#y = cancer.target
 
 	# Creating train and test datasets (70% train, 30% test)
 	X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.30)
@@ -34,7 +44,5 @@ def SVM_example():
 	n_features = X_train.shape[1]
 	n_simulations = 10
 
-	fiil = FeatureImportanceAnalyzer(classifier, X_test, y_test)
+	fiil = FeatureImportanceAnalyzer(classifier, file)
 	print (fiil.get())
-
-	feature_importances_ = []

@@ -11,9 +11,9 @@ from examples import ET_example
 from examples import ETR_example
 
 def run():
-	#RF_example()
-	#DNN_example()
-	KNN_example()
+	RF_example()
+	#DNN_example() #Does not work
+	#KNN_example()
 	#LogR_example()
 	#SVM_example()
 	#MLP_example()

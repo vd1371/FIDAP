@@ -8,7 +8,9 @@ from FIIL import FeatureImportanceAnalyzer
 
 def KNN_example():
 	# Loading iris dataset
-	path = "iris.csv"
+    #iris = datasets.load_iris()
+	path = "https://gist.githubusercontent.com/netj/8836201/raw/" \
+            "6f9306ad21398ea43cba4f7d537619d0e07d5ae3/iris.csv"
 	file = pd.read_csv(path)
 	#iris = load_iris()
 	X = file.iloc[: , :-1].values
@@ -37,5 +39,3 @@ def KNN_example():
 
 	fiil = FeatureImportanceAnalyzer(classifier, file)
 	print (fiil.get())
-
-	feature_importances_ = []

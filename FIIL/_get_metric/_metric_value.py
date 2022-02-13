@@ -23,8 +23,8 @@ class _metric_value:
 		if isinstance(self.model, 
 							(sklearn.linear_model._bayes.BayesianRidge,
 							sklearn.tree._classes.DecisionTreeRegressor,
+							#keras.engine.sequential.Sequential,
 							sklearn.ensemble._forest.ExtraTreesRegressor)):
-							#keras.engine.sequential.Sequential)):
 			value = r2_score(self.y_true, self.y_pred) #for regression
 			return value
 

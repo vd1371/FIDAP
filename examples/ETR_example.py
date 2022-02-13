@@ -3,14 +3,16 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_boston
 from sklearn.ensemble import ExtraTreesRegressor
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import r2_score
 from FIIL import FeatureImportanceAnalyzer
 
 def ETR_example():
 
-	# Loading boston dataset
-	path = "Boston.csv"
+	# Loading Boston Dataset
+	path = "https://raw.githubusercontent.com/selva86/datasets/" \
+            "master/BostonHousing.csv"
 	file = pd.read_csv(path)
+
 	X = file.iloc[: , :-1].values
 	y = file.iloc[: , -1].values
 
@@ -25,8 +27,8 @@ def ETR_example():
 
 	# Outputs
 	y_pred = classifier.predict(X_test)
-	error = mean_squared_error(y_test, y_pred)
-	print(error)
+	r2 = r2_score(y_test, y_pred)
+	print(f"r2 Score Of Test Set : {r2}")
 
 	# calculating feature importance
 	n_features = X_train.shape[1]
@@ -34,5 +36,3 @@ def ETR_example():
 
 	fiil = FeatureImportanceAnalyzer(classifier, file)
 	print (fiil.get())
-
-	feature_importances_ = []
