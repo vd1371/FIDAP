@@ -10,6 +10,7 @@ from examples import DTR_example
 from examples import ET_example
 from examples import ETR_example
 from examples import RN_example
+from examples import PA_example
 from examples import DigitRecognition_example
 
 def run():
@@ -25,6 +26,7 @@ def run():
 	#ET_example()
 	#ETR_example()
 	#RN_example()
+	#PA_example()
 	#DigitRecognition_example()
 
 

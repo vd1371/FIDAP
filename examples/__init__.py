@@ -10,4 +10,5 @@ from .DTR_example import DTR_example
 from .ET_example import ET_example
 from .ETR_example import ETR_example
 from .RN_example import RN_example
+from .PA_example import PA_example
 from .DigitRecognition_example import DigitRecognition_example
