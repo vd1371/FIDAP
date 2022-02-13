@@ -35,7 +35,8 @@ class _metric_value:
 							sklearn.svm._classes.SVC,
 							sklearn.neural_network._multilayer_perceptron.MLPClassifier,
 							sklearn.tree._classes.DecisionTreeClassifier,
-							sklearn.ensemble._forest.ExtraTreesClassifier)):
+							sklearn.ensemble._forest.ExtraTreesClassifier,
+							sklearn.neighbors._classification.RadiusNeighborsClassifier)):
 			value = accuracy_score(self.y_true, self.y_pred) #for classification
 			return value
 
