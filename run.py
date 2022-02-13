@@ -11,10 +11,11 @@ from examples import ET_example
 from examples import ETR_example
 from examples import RN_example
 from examples import PA_example
+from examples import PAR_example
 from examples import DigitRecognition_example
 
 def run():
-	RF_example()
+	#RF_example()
 	#DNN_example() #Does not work
 	#KNN_example()
 	#LogR_example()
@@ -27,6 +28,7 @@ def run():
 	#ETR_example()
 	#RN_example()
 	#PA_example()
+	PAR_example()
 	#DigitRecognition_example()
 
 
