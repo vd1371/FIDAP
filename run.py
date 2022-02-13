@@ -13,7 +13,7 @@ from examples import ETR_example
 def run():
 	#RF_example()
 	#DNN_example()
-	#KNN_example()
+	KNN_example()
 	#LogR_example()
 	#SVM_example()
 	#MLP_example()
@@ -21,7 +21,7 @@ def run():
 	#NB_example()
 	#DTR_example()
 	#ET_example()
-	ETR_example()
+	#ETR_example()
 
 
 if __name__ == "__main__":
