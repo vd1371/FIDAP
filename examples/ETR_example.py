@@ -28,7 +28,7 @@ def ETR_example():
 	# Outputs
 	y_pred = classifier.predict(X_test)
 	r2 = r2_score(y_test, y_pred)
-	print(f"r2 Score Of Test Set : {r2}")
+	print(f"Model R2 Score : {r2}")
 
 	# calculating feature importance
 	n_features = X_train.shape[1]

@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_boston
 from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Dense
+from sklearn.metrics import r2_score
 from FIIL import FeatureImportanceAnalyzer
 
 
@@ -38,15 +39,12 @@ def DNN_example():
     # Fit the model
     classifier.fit(X_train, y_train, epochs=150, batch_size=32, verbose=0)
 
-    # Evaluate the model
-    error = classifier.evaluate(X_test, y_test, verbose=0)
-    print('MSE: %.3f, RMSE: %.3f' % (error, np.sqrt(error)))
+    # Predict
+    y_pred = classifier.predict(X_test)
 
-    # Making a prediction
-    #row = [0.00632,18.00,2.310,0,0.5380,6.5750,
-           #65.20,4.0900,1,296.0,15.30,396.90,4.98]
-    #yhat = classifier.predict([row])
-    #print('Predicted: %.3f' % yhat)
+    # Outputs
+    r2 = r2_score(y_test, y_pred)
+    print(f"Model R2 Score : {r2}")
 
     # Calculating feature importance
     n_simulations = 10

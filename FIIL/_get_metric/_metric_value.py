@@ -1,8 +1,8 @@
-#try: 
-	#import keras
-#except:
-	#from tensorflow import keras
-from tensorflow import keras
+try: 
+	import keras
+except:
+	from tensorflow import keras
+
 import sklearn
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score
@@ -23,7 +23,7 @@ class _metric_value:
 		if isinstance(self.model, 
 							(sklearn.linear_model._bayes.BayesianRidge,
 							sklearn.tree._classes.DecisionTreeRegressor,
-							#keras.engine.sequential.Sequential,
+							keras.engine.sequential.Sequential,
 							sklearn.ensemble._forest.ExtraTreesRegressor,
 							sklearn.linear_model._passive_aggressive.PassiveAggressiveRegressor)):
 			value = r2_score(self.y_true, self.y_pred) #for regression

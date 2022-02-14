@@ -15,8 +15,8 @@ from examples import PAR_example
 from examples import DigitRecognition_example
 
 def run():
-	#RF_example()
-	#DNN_example() #Does not work
+	RF_example()
+	#DNN_example()
 	#KNN_example()
 	#LogR_example()
 	#SVM_example()
@@ -28,7 +28,7 @@ def run():
 	#ETR_example()
 	#RN_example()
 	#PA_example()
-	PAR_example()
+	#PAR_example()
 	#DigitRecognition_example()
 
 

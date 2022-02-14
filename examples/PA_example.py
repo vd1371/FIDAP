@@ -36,7 +36,7 @@ def PA_example():
     print ("Classification report", report)
 
     accuracy = accuracy_score(y_test, y_pred)
-    print ("Accuracy score", accuracy)
+    print ("Model accuracy score :", accuracy)
 
     # calculating feature importance
     n_features = X_train.shape[1]
