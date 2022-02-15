@@ -29,7 +29,8 @@ class _metric_value:
 							sklearn.linear_model._passive_aggressive.PassiveAggressiveRegressor,
 							xgboost.sklearn.XGBRegressor,
 							sklearn.svm._classes.SVR,
-							sklearn.ensemble._gb.GradientBoostingRegressor)):
+							sklearn.ensemble._gb.GradientBoostingRegressor,
+							sklearn.linear_model._base.LinearRegression)):
 			value = r2_score(self.y_true, self.y_pred) #for regression
 			return value
 
