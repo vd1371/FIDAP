@@ -28,7 +28,8 @@ class _metric_value:
 							sklearn.ensemble._forest.ExtraTreesRegressor,
 							sklearn.linear_model._passive_aggressive.PassiveAggressiveRegressor,
 							xgboost.sklearn.XGBRegressor,
-							sklearn.svm._classes.SVR)):
+							sklearn.svm._classes.SVR,
+							sklearn.ensemble._gb.GradientBoostingRegressor)):
 			value = r2_score(self.y_true, self.y_pred) #for regression
 			return value
 

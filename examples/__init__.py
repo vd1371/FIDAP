@@ -14,4 +14,5 @@ from .PA_example import PA_example
 from .PAR_example import PAR_example
 from .XGB_example import XGB_example
 from .SVR_example import SVR_example
+from .GBR_example import GBR_example
 from .DigitRecognition_example import DigitRecognition_example
