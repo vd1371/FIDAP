@@ -12,6 +12,7 @@ from examples import ETR_example
 from examples import RN_example
 from examples import PA_example
 from examples import PAR_example
+from examples import XGB_example
 from examples import DigitRecognition_example
 
 def run():
@@ -19,7 +20,7 @@ def run():
 	#DNN_example()
 	#KNN_example()
 	#LogR_example()
-	SVC_example()
+	#SVC_example()
 	#MLP_example()
 	#DT_example()
 	#NB_example()
@@ -28,7 +29,8 @@ def run():
 	#ETR_example()
 	#RN_example()
 	#PA_example()
-	#PAR_example()
+	#PAR_example() #this example is working but with negative R2 score value.
+	XGB_example()
 	#DigitRecognition_example()
 
 

@@ -4,6 +4,7 @@ except:
 	from tensorflow import keras
 
 import sklearn
+import xgboost
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import r2_score
@@ -25,7 +26,8 @@ class _metric_value:
 							sklearn.tree._classes.DecisionTreeRegressor,
 							keras.engine.sequential.Sequential,
 							sklearn.ensemble._forest.ExtraTreesRegressor,
-							sklearn.linear_model._passive_aggressive.PassiveAggressiveRegressor)):
+							sklearn.linear_model._passive_aggressive.PassiveAggressiveRegressor,
+							xgboost.sklearn.XGBRegressor)):
 			value = r2_score(self.y_true, self.y_pred) #for regression
 			return value
 
