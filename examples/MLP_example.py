@@ -21,12 +21,12 @@ def MLP_example():
 	X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.30)
 
 	# Define model
-	classifier = MLPClassifier(hidden_layer_sizes=(8,8,8), 
+	Model = MLPClassifier(hidden_layer_sizes=(8,8,8), 
 	                           activation='relu', solver='adam', max_iter=1000)
-	classifier.fit(X_train,y_train)
+	Model.fit(X_train,y_train)
 
 	# Predict
-	y_pred = classifier.predict(X_test)
+	y_pred = Model.predict(X_test)
 
 	# Outputs
 	report = classification_report(y_test, y_pred)
@@ -39,5 +39,5 @@ def MLP_example():
 	n_features = X_train.shape[1]
 	n_simulations = 10
 
-	fiil = FeatureImportanceAnalyzer(classifier, file)
+	fiil = FeatureImportanceAnalyzer(Model, file)
 	print (fiil.get())

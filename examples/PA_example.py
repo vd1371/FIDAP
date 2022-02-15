@@ -23,13 +23,13 @@ def PA_example():
     X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.30)
 
     # Define model
-    classifier = PassiveAggressiveClassifier(C = 0.5, random_state = 5)
+    Model = PassiveAggressiveClassifier(C = 0.5, random_state = 5)
 
     # Fit the model
-    classifier.fit(X_train,y_train)
+    Model.fit(X_train,y_train)
 
     # Predict
-    y_pred = classifier.predict(X_test)
+    y_pred = Model.predict(X_test)
 
     # Outputs
     report = classification_report(y_test, y_pred)
@@ -42,5 +42,5 @@ def PA_example():
     n_features = X_train.shape[1]
     n_simulations = 10
 
-    fiil = FeatureImportanceAnalyzer(classifier, file)
+    fiil = FeatureImportanceAnalyzer(Model, file)
     print (fiil.get())

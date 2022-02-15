@@ -27,20 +27,20 @@ def DNN_example():
     n_features = X_train.shape[1]
 
     # Define model
-    classifier = Sequential()
-    classifier.add(Dense(10, activation='relu', kernel_initializer='he_normal', 
+    Model = Sequential()
+    Model.add(Dense(10, activation='relu', kernel_initializer='he_normal', 
                     input_shape=(n_features,)))
-    classifier.add(Dense(8, activation='relu', kernel_initializer='he_normal'))
-    classifier.add(Dense(1))
+    Model.add(Dense(8, activation='relu', kernel_initializer='he_normal'))
+    Model.add(Dense(1))
 
     # Compile the model
-    classifier.compile(optimizer='adam', loss='mse')
+    Model.compile(optimizer='adam', loss='mse')
 
     # Fit the model
-    classifier.fit(X_train, y_train, epochs=150, batch_size=32, verbose=0)
+    Model.fit(X_train, y_train, epochs=150, batch_size=32, verbose=0)
 
     # Predict
-    y_pred = classifier.predict(X_test)
+    y_pred = Model.predict(X_test)
 
     # Outputs
     r2 = r2_score(y_test, y_pred)
@@ -49,5 +49,5 @@ def DNN_example():
     # Calculating feature importance
     n_simulations = 10
 
-    fiil = FeatureImportanceAnalyzer(classifier, file)
+    fiil = FeatureImportanceAnalyzer(Model, file)
     print (fiil.get())

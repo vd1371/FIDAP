@@ -2,11 +2,11 @@ import numpy as np
 import pandas as pd
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
-from sklearn import svm
+from sklearn.svm import SVC
 from sklearn.metrics import classification_report, accuracy_score
 from FIIL import FeatureImportanceAnalyzer
 
-def SVM_example():
+def SVC_example():
 
 	# Loading Pima Indians Diabetes Dataset
 	#cancer = datasets.load_breast_cancer()
@@ -27,11 +27,11 @@ def SVM_example():
 
 
 	# Define model
-	classifier = svm.SVC(kernel='linear') # Linear Kernel
-	classifier.fit(X_train,y_train)
+	Model = SVC(kernel='linear') # Linear Kernel
+	Model.fit(X_train,y_train)
 
 	# Predict
-	y_pred = classifier.predict(X_test)
+	y_pred = Model.predict(X_test)
 
 	# Outputs
 	report = classification_report(y_test, y_pred)
@@ -44,5 +44,5 @@ def SVM_example():
 	n_features = X_train.shape[1]
 	n_simulations = 10
 
-	fiil = FeatureImportanceAnalyzer(classifier, file)
+	fiil = FeatureImportanceAnalyzer(Model, file)
 	print (fiil.get())

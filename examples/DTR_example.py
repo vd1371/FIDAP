@@ -20,13 +20,13 @@ def DTR_example():
 	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30)
 
 	# Define model
-	classifier = DecisionTreeRegressor(random_state = 0)
+	Model = DecisionTreeRegressor(random_state = 0)
 
 	# Fit the model
-	classifier.fit(X_train, y_train)
+	Model.fit(X_train, y_train)
 
 	# Outputs
-	y_pred = classifier.predict(X_test)
+	y_pred = Model.predict(X_test)
 	r2 = r2_score(y_test, y_pred)
 	print(f"Model R2 Score : {r2}")
 
@@ -35,5 +35,5 @@ def DTR_example():
 	n_features = X_train.shape[1]
 	n_simulations = 10
 
-	fiil = FeatureImportanceAnalyzer(classifier, file)
+	fiil = FeatureImportanceAnalyzer(Model, file)
 	print (fiil.get())
