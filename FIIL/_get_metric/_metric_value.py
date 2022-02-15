@@ -27,7 +27,8 @@ class _metric_value:
 							keras.engine.sequential.Sequential,
 							sklearn.ensemble._forest.ExtraTreesRegressor,
 							sklearn.linear_model._passive_aggressive.PassiveAggressiveRegressor,
-							xgboost.sklearn.XGBRegressor)):
+							xgboost.sklearn.XGBRegressor,
+							sklearn.svm._classes.SVR)):
 			value = r2_score(self.y_true, self.y_pred) #for regression
 			return value
 

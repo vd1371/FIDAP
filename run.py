@@ -13,6 +13,7 @@ from examples import RN_example
 from examples import PA_example
 from examples import PAR_example
 from examples import XGB_example
+from examples import SVR_example
 from examples import DigitRecognition_example
 
 def run():
@@ -30,7 +31,8 @@ def run():
 	#RN_example()
 	#PA_example()
 	#PAR_example() #this example is working but with negative R2 score value.
-	XGB_example()
+	#XGB_example()
+	SVR_example()
 	#DigitRecognition_example()
 
 
