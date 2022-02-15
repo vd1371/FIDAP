@@ -42,7 +42,8 @@ class _metric_value:
 							sklearn.tree._classes.DecisionTreeClassifier,
 							sklearn.ensemble._forest.ExtraTreesClassifier,
 							sklearn.neighbors._classification.RadiusNeighborsClassifier,
-							sklearn.linear_model._passive_aggressive.PassiveAggressiveClassifier)):
+							sklearn.linear_model._passive_aggressive.PassiveAggressiveClassifier,
+							sklearn.ensemble._gb.GradientBoostingClassifier)):
 			value = accuracy_score(self.y_true, self.y_pred) #for classification
 			return value
 
