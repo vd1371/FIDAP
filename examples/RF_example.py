@@ -15,7 +15,7 @@ def RF_example():
     file = pd.read_csv(path)
     
     # Pre process
-    X = X = file.iloc[: , :-1].values
+    X = file.iloc[: , :-1].values
     y = file.iloc[: , -1].values
     #X = iris.data[:, :]
     #y = iris.target

@@ -18,7 +18,7 @@ class _metric_value:
 		self.model = model
 		self.X = X
 		self.y_true = y_true
-		self.y_pred = model.predict(self.X)
+		#self.y_pred = model.predict(X)
 
 	def _get(self):
 
@@ -32,7 +32,7 @@ class _metric_value:
 							sklearn.svm._classes.SVR,
 							sklearn.ensemble._gb.GradientBoostingRegressor,
 							sklearn.linear_model._base.LinearRegression)):
-			value = r2_score(self.y_true, self.y_pred) #for regression
+			value = r2_score(self.y_true, self.model.predict(self.X)) #for regression
 			return value
 
 		elif isinstance(self.model, 
@@ -47,6 +47,10 @@ class _metric_value:
 							sklearn.linear_model._passive_aggressive.PassiveAggressiveClassifier,
 							sklearn.ensemble._gb.GradientBoostingClassifier,
 							catboost.core.CatBoostClassifier)):
-			value = accuracy_score(self.y_true, self.y_pred) #for classification
+			value = accuracy_score(self.y_true, self.model.predict(self.X)) #for classification
 			return value
 
+		elif isinstance (self.model,
+							(sklearn.cluster._kmeans.KMeans)):
+			value = silhouette_score(self.X, self.model.fit_predict(self.X))
+			return value

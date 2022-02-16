@@ -15,19 +15,28 @@ def get_features_importance(**params):
 
 	X = params.get("X")
 	Y_true = params.get("Y")
+
 	n_simulations = params.get("n_simulations")
-	features = params.get("features") #features = [f"X{i}" for i in range(X.shape[1])]
+
+	features = params.get("features") 
+	#features = [f"X{i}" for i in range(X.shape[1])]
+
 	#file = params.get("file")
+
 	#metric = params.get("metric")
+
 	model = params.get("model")
-	pred_fn = params.get("pred_fn")
+
+	#pred_fn = params.get("pred_fn")
 
 	y_pred = model.predict(X)
+
 	initial_metric = _metric_value(model, X, Y_true)._get()
 
 	feature_importances_ = {}
-	for i in range(len(features)-1):
-		
+
+	for i in range(X.shape[1]):
+			
 		X_temp = X.copy()
 
 		temp_metric_list = []
@@ -43,7 +52,9 @@ def get_features_importance(**params):
 			temp_metric_list.append(metric_temp)
 
 		ft_importance = np.mean(temp_metric_list)
+
 		# ft_importance = abs(metric_mean) if metric_mean < 0 else 0
+		
 		feature_importances_[features[i]] = ft_importance
 
 	return feature_importances_

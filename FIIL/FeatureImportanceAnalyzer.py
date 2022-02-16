@@ -10,8 +10,8 @@ class FeatureImportanceAnalyzer:
 		#_check_Y_type_and_shape(Y_test)
 		
 		self.model = model
-		self.X = _get_X(file)
-		self.Y = _get_y(file)
+		self.X = _get_X(model, file)
+		self.Y = _get_y(model, file)
 		self.features = _get_features_names_from_data(file)
 		#self.metric = _get_metric(**params)
 
