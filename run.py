@@ -17,6 +17,7 @@ from examples import SVR_example
 from examples import GBR_example
 from examples import GBC_example
 from examples import LR_example
+from examples import CBC_example
 from examples import DigitRecognition_example
 
 def run():
@@ -38,7 +39,8 @@ def run():
 	#SVR_example()
 	#GBR_example()
 	#GBC_example()
-	LR_example()
+	#LR_example()
+	CBC_example()
 	#DigitRecognition_example()
 
 

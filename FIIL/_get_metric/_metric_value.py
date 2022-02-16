@@ -5,6 +5,7 @@ except:
 
 import sklearn
 import xgboost
+import catboost
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import r2_score
@@ -44,7 +45,8 @@ class _metric_value:
 							sklearn.ensemble._forest.ExtraTreesClassifier,
 							sklearn.neighbors._classification.RadiusNeighborsClassifier,
 							sklearn.linear_model._passive_aggressive.PassiveAggressiveClassifier,
-							sklearn.ensemble._gb.GradientBoostingClassifier)):
+							sklearn.ensemble._gb.GradientBoostingClassifier,
+							catboost.core.CatBoostClassifier)):
 			value = accuracy_score(self.y_true, self.y_pred) #for classification
 			return value
 
