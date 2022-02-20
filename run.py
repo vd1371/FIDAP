@@ -41,8 +41,8 @@ def run():
 	#GBR_example()
 	#GBC_example()
 	#LR_example()
-	#CBC_example()
-	KMClst_example()
+	CBC_example()
+	#KMClst_example()
 	#DigitRecognition_example()
 
 
