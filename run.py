@@ -19,6 +19,7 @@ from examples import GBC_example
 from examples import LR_example
 from examples import CBC_example
 from examples import KMClst_example
+from examples import MSClst_example
 from examples import DigitRecognition_example
 
 def run():
@@ -41,8 +42,9 @@ def run():
 	#GBR_example()
 	#GBC_example()
 	#LR_example()
-	CBC_example()
+	#CBC_example()
 	#KMClst_example()
+	MSClst_example()
 	#DigitRecognition_example()
 
 

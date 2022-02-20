@@ -54,3 +54,7 @@ class _metric_value:
 							(sklearn.cluster._kmeans.KMeans)):
 			value = silhouette_score(self.X, self.model.fit_predict(self.X))
 			return value
+		elif isinstance (self.model,
+							(sklearn.cluster._mean_shift.MeanShift)):
+			value = silhouette_score(self.X, self.model.labels_)
+			return value

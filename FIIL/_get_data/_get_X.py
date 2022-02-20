@@ -34,5 +34,6 @@ def _get_X(model, file):
 							sklearn.ensemble._gb.GradientBoostingRegressor,
 							sklearn.linear_model._base.LinearRegression)):
 		return file.iloc[: , :-1].values
-	elif isinstance(model,	(sklearn.cluster._kmeans.KMeans)):
+	elif isinstance(model,	(sklearn.cluster._kmeans.KMeans,
+							sklearn.cluster._mean_shift.MeanShift)):
 		return file.iloc[: , :].values

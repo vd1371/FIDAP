@@ -19,4 +19,5 @@ from .GBC_example import GBC_example
 from .LR_example import LR_example
 from .CBC_example import CBC_example
 from .KMClst_example import KMClst_example
+from .MSClst_example import MSClst_example
 from .DigitRecognition_example import DigitRecognition_example
