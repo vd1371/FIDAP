@@ -13,10 +13,10 @@ class FeatureImportanceAnalyzer:
 		self.X = _get_X(model, file)
 		self.Y = _get_y(model, file)
 		self.features = _get_features_names_from_data(file)
-		#self.metric = _get_metric(**params)
+		self.metric = _get_metric(**params)
 
 		self.n_simulations = params.get("n_simulations", 100)
-		#self.pred_fn = params.get("pred_fn", None)
+		self.pred_fn = params.get("pred_fn", None)
 		#self.pixel_percentage = params.get("pixel_percentage", 0.02)
 
 	def get(self):

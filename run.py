@@ -1,29 +1,7 @@
-from examples import RF_example
-from examples import DNN_example
-from examples import KNN_example
-from examples import LogR_example
-from examples import SVC_example
-from examples import MLP_example
-from examples import DT_example
-from examples import NB_example
-from examples import DTR_example
-from examples import ET_example
-from examples import ETR_example
-from examples import RN_example
-from examples import PA_example
-from examples import PAR_example
-from examples import XGB_example
-from examples import SVR_example
-from examples import GBR_example
-from examples import GBC_example
-from examples import LR_example
-from examples import CBC_example
-from examples import KMClst_example
-from examples import MSClst_example
-from examples import DigitRecognition_example
+from examples import *
 
 def run():
-	#RF_example()
+	RF_example()
 	#DNN_example()
 	#KNN_example()
 	#LogR_example()
@@ -44,7 +22,7 @@ def run():
 	#LR_example()
 	#CBC_example()
 	#KMClst_example()
-	MSClst_example()
+	# MSClst_example()
 	#DigitRecognition_example()
 
 
