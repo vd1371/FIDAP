@@ -12,6 +12,7 @@ def DNN_example():
 
     # Define model
     Model = Sequential()
+
     Model.add(Dense(10, activation='relu', kernel_initializer='he_normal', 
                     input_shape=(n_features,)))
     Model.add(Dense(8, activation='relu', kernel_initializer='he_normal'))

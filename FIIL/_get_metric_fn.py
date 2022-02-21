@@ -5,7 +5,7 @@ from sklearn.metrics import silhouette_score
 
 from ._get_type_of_modelling import _get_type_of_modelling
 
-def _get_metric(**params):
+def _get_metric_fn(model, **params):
 
 	metric = params.get("metric")
 

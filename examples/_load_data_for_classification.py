@@ -10,8 +10,8 @@ def _load_data_for_classification():
 	df = pd.DataFrame(data=data.data, columns=data.feature_names)
 	df['Y'] = data.target
 
-	X = file.iloc[: , :-1].values
-	y = file.iloc[: , -1].values
+	X = df.iloc[: , :-1].values
+	y = df.iloc[: , -1].values
 
 	X_train, X_test, y_train, y_test = \
 		train_test_split(X, y,test_size=0.30)

@@ -3,15 +3,16 @@ try:
 except:
 	from tensorflow import keras
 
+import tensorflow
 import sklearn
 import xgboost
 import catboost
 
-def _get_type_of_modelling(model)
+def _get_type_of_modelling(model):
 	if isinstance(model, 
 				(sklearn.linear_model._bayes.BayesianRidge,
 				sklearn.tree._classes.DecisionTreeRegressor,
-				keras.engine.sequential.Sequential,
+				tensorflow.python.keras.engine.sequential.Sequential,
 				sklearn.ensemble._forest.ExtraTreesRegressor,
 				sklearn.linear_model._passive_aggressive.PassiveAggressiveRegressor,
 				xgboost.sklearn.XGBRegressor,

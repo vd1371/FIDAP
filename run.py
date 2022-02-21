@@ -2,7 +2,7 @@ from examples import *
 
 def run():
 	RF_example()
-	#DNN_example()
+	# DNN_example()
 	#KNN_example()
 	#LogR_example()
 	#SVC_example()

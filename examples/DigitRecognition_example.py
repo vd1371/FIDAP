@@ -1,4 +1,8 @@
-from keras.datasets import mnist
+try:
+    from keras.datasets import mnist
+except:
+    from tensorflow.keras.datasets import mnist
+
 from matplotlib import pyplot
 
 def DigitRecognition_example():
