@@ -13,48 +13,30 @@ from sklearn.metrics import silhouette_score
 
 def get_features_importance(**params):
 
+	model = params.get("model")
 	X = params.get("X")
 	Y_true = params.get("Y")
-
+	metric = params.get("metric")
 	n_simulations = params.get("n_simulations")
+	features = params.get("features")
+	pred_fn = params.get("pred_fn")
 
-	features = params.get("features") 
-	#features = [f"X{i}" for i in range(X.shape[1])]
+	y_pred = getattr(model, pred_fn)(X)
+	initial_metric = metric(Y_true, y_pred)
 
-	#file = params.get("file")
-
-	#metric = params.get("metric")
-
-	model = params.get("model")
-
-	#pred_fn = params.get("pred_fn")
-
-	y_pred = model.predict(X)
-
-	initial_metric = _metric_value(model, X, Y_true)._get()
-
-	feature_importances_ = {}
-
-	for i in range(X.shape[1]):
+	feature_importances = {}
+	for i, feature in enumerate(features):
 			
 		X_temp = X.copy()
 
 		temp_metric_list = []
-
 		for j in range (n_simulations):
-
 			np.random.shuffle(X_temp[:,i])
-
-			y_pred = model.predict(X_temp)
-
-			metric_temp = initial_metric - _metric_value(model, X_temp, Y_true)._get()
-
-			temp_metric_list.append(metric_temp)
+			y_pred = getattr(model, pred_fn)(X_temp)
+			loss = initial_metric - metric(Y_true, y_pred)
+			temp_metric_list.append(loss)
 
 		ft_importance = np.mean(temp_metric_list)
+		feature_importances[feature] = ft_importance
 
-		# ft_importance = abs(metric_mean) if metric_mean < 0 else 0
-		
-		feature_importances_[features[i]] = ft_importance
-
-	return feature_importances_
+	return feature_importances
