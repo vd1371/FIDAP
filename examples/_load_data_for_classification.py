@@ -1,0 +1,25 @@
+import pandas as pd
+
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+
+def _load_data_for_classification():
+
+	data = load_iris()
+
+	df = pd.DataFrame(data=data.data, columns=data.feature_names)
+	df['Y'] = data.target
+
+	X = file.iloc[: , :-1].values
+	y = file.iloc[: , -1].values
+
+	X_train, X_test, y_train, y_test = \
+		train_test_split(X, y,test_size=0.30)
+
+	return X_train, X_test, y_train, y_test
+
+
+if __name__ == "__main__":
+
+	_load_data_for_classification()
+
