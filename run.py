@@ -14,7 +14,7 @@ def run():
 	#ETR_example()
 	#RN_example()
 	#PA_example()
-	#PAR_example() #this example works but gives negative R2 score values.
+	#PAR_example() #this example works but gives negative R2 score value.
 	#XGB_example()
 	#SVR_example()
 	#GBR_example()
