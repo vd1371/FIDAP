@@ -2,6 +2,7 @@ from ._get_features_importance import get_features_importance
 from ._check_X_Y_type_and_shape import _check_X_Y_type_and_shape
 from ._prepare_X_Y_features import _prepare_X_Y_features
 from ._get_metric_fn import _get_metric_fn
+from ._plot_box_and_save import _plot_box_and_save
 
 
 class FeatureImportanceAnalyzer:
@@ -18,8 +19,12 @@ class FeatureImportanceAnalyzer:
 		self.direc = params.get("direc", '.')
 
 	def get(self):
-		self.features_importance, self.features_importance_instances = \
+		self.features_importance, \
+		self.features_importance_instances, \
+		self.features = \
 			get_features_importance(**self.__dict__)
+		_plot_box_and_save(get_features_importance(**self.__dict__)[1], 
+							get_features_importance(**self.__dict__)[2])
 
 		return self.features_importance
 
