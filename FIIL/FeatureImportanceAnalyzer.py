@@ -19,15 +19,13 @@ class FeatureImportanceAnalyzer:
 		self.direc = params.get("direc", '.')
 
 	def get(self):
-		self.features_importance, \
-		self.features_importance_instances, \
-		self.features = \
-			get_features_importance(**self.__dict__)
-		_plot_box_and_save(get_features_importance(**self.__dict__)[1], 
-							get_features_importance(**self.__dict__)[2])
+		self.features_importance, self.features_importance_instances = \
+				get_features_importance(**self.__dict__)
 
 		return self.features_importance
 
-	#def draw(self):
-		##TODO: develop some beautiful figures based on the feature importances
+	def boxplot(self):
+		if not hasattr(self, 'features_importance_instances'):
+			self.get()
+		_plot_box_and_save(self.features_importance_instances)
 

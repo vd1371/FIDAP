@@ -25,8 +25,8 @@ def get_features_importance(**params):
 			loss = initial_metric - metric_fn(Y_true, y_pred)
 			temp_metric_list.append(loss)
 
-		ft_importance = np.mean(temp_metric_list)
+		ft_importance = round(np.mean(temp_metric_list), 4)
 		feature_importances[feature] = ft_importance
 		feature_importances_instaces[feature] = temp_metric_list[:]
 
-	return feature_importances, feature_importances_instaces, features
+	return feature_importances, feature_importances_instaces

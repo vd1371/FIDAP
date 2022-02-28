@@ -19,10 +19,14 @@ def _prepare_X_Y_features(model, X, Y, **params):
 	else:
 		y_out = Y
 
-
-	if isinstance(X, pd.DataFrame):
-		features = list(X.columns)
+	if features == None:
+		if isinstance(X, pd.DataFrame):
+			features = list(X.columns)
+		else:
+			features = [f'X{i}' for i in range(len(X[0]))]
 	else:
-		features = [f'X{i}' for i in range(len(X[0]))]
+		if len(features) != x_out.shape[1]:
+			raise ValueError ("Length of user input features must be equal "\
+								"to the length of input columns")
 
 	return x_out, y_out, features

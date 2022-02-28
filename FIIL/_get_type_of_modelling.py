@@ -1,7 +1,7 @@
-try: 
-	import keras
+try:
+	import tensorflow.python.keras.engine.sequential as tf_models
 except:
-	from tensorflow import keras
+	import keras.engine.sequential as tf_models
 
 import tensorflow
 import sklearn
@@ -12,8 +12,7 @@ def _get_type_of_modelling(model):
 	if isinstance(model, 
 				(sklearn.linear_model._bayes.BayesianRidge,
 				sklearn.tree._classes.DecisionTreeRegressor,
-				#tensorflow.python.keras.engine.sequential.Sequential,
-				keras.engine.sequential.Sequential,
+				tf_models.Sequential,
 				sklearn.ensemble._forest.ExtraTreesRegressor,
 				sklearn.linear_model._passive_aggressive.PassiveAggressiveRegressor,
 				xgboost.sklearn.XGBRegressor,

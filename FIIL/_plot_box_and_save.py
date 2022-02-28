@@ -1,7 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def _plot_box_and_save(fiil_values_instances_dict,features_names):
+def _plot_box_and_save(fiil_values_instances_dict):
+
+	features_names = list(fiil_values_instances_dict.keys())
+
+	font_size_num = len(features_names)*4
+	font_size_tit = len(features_names)*6
+	plt.rcParams['font.size'] = font_size_num
+	plt.rcParams['font.family'] = 'Times New Roman'
 
 	fiil_values_instances = list(fiil_values_instances_dict.values())
 	
@@ -11,10 +18,7 @@ def _plot_box_and_save(fiil_values_instances_dict,features_names):
 
 	fig = plt.figure(figsize = (fig_length, fig_length/Golden_ratio))
 
-	# creating the bar plot
-
 	plot = plt.boxplot(fiil_values_instances, labels=features_names)
-
 
 	for cap in plot['caps']:
 		cap.set(color =[0,0,0.9],
@@ -32,20 +36,9 @@ def _plot_box_and_save(fiil_values_instances_dict,features_names):
 		median.set(color =[0,0,0.3],
 			linewidth = 3)
 
-	font_size_num = len(features_names)*4
+	
 
-	font_size_tit = len(features_names)*6
+	plt.xlabel("Features", fontsize=font_size_tit)
+	plt.ylabel("FIIL Values", fontsize=font_size_tit)
 
-	plt.rcParams['font.size'] = font_size_num
-
-	plt.rcParams['font.family'] = 'Times New Roman'
-
-	plt.xlabel("features", fontsize=font_size_tit)
-
-	plt.ylabel("features importance value", fontsize=font_size_tit)
-
-	plt.title("feature importance analysis", fontsize=font_size_tit)
-
-	plt.show()
-
-	fig.savefig('Box_Output.svg',dpi=200)
+	fig.savefig('Box_Output.svg', dpi=300)
