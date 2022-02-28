@@ -16,7 +16,7 @@ def get_pixel_importance(img, **params):
 
 	plt.ion()
 
-	pixs = 14
+	pixs = 7
 	pad = 1
 	padding_times = int((28-pixs)/pad) + 1
 	for i in range(padding_times):
@@ -47,9 +47,11 @@ def get_pixel_importance(img, **params):
 				plt.draw()
 
 			pixel_imps[x_init: x_end, y_init: y_end] += \
-				(1-(max_prob - new_prob)/max_prob)
+				(max_prob - new_prob)
+				# (1-(max_prob - new_prob)/max_prob)
+				# (max_prob - new_prob)
 
-	pixel_imps = pixel_imps / np.max(repetition_vector)
+	pixel_imps = pixel_imps / repetition_vector
 
 	plt.ioff()
 	fig, ax = plt.subplots(1, 2)
