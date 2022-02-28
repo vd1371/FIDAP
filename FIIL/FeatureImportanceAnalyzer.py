@@ -1,4 +1,4 @@
-from ._get_features_importance import get_features_importance
+from ._get_importance import get_features_importance
 from ._check_X_Y_type_and_shape import _check_X_Y_type_and_shape
 from ._prepare_X_Y_features import _prepare_X_Y_features
 from ._get_metric_fn import _get_metric_fn

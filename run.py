@@ -1,7 +1,7 @@
 from examples import *
 
 def run():
-	RF_example()
+	# RF_example()
 	#DNN_example()
 	#KNN_example()
 	#LogR_example()
@@ -23,7 +23,7 @@ def run():
 	#CBC_example()
 	#KMClst_example()
 	# MSClst_example()
-	#DigitRecognition_example()
+	DigitRecognition_example()
 
 
 if __name__ == "__main__":

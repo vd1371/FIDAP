@@ -1,1 +1,2 @@
 from .FeatureImportanceAnalyzer import FeatureImportanceAnalyzer
+from .PixelImportanceAnalyzer import PixelImportanceAnalyzer
