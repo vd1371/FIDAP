@@ -16,47 +16,100 @@ def get_pixel_importance(img, **params):
 
 	plt.ion()
 
-	pixs = 7
-	pad = 1
+	pixs = 6
+	square = 6
+	pad = 2
+	pad_x = 2
+	pad_y = 2
+	pad_x_temp = pad_x
+	pad_y_temp = pad_y
+
 	padding_times = int((28-pixs)/pad) + 1
-	for i in range(padding_times):
-		for j in range(padding_times):
 
-			x_init = min(i*pad, 28-pixs)
-			x_end = min(i*pad+pixs, 28)
-			y_init = min(j*pad, 28-pixs)
-			y_end = min(j*pad+pixs, 28)
+	while pad_x_temp <= square:
 
-			print (i, j)
+		while pad_y_temp <= square:
+
+			x_start = 0
+			x_end = pad_x_temp
+			y_start = 0
+			y_end = pad_y_temp
 
 			new_img = img.copy()
 
-			new_img[0, x_init: x_end, y_init: y_end, 0] = \
-				np.zeros(shape = (pixs, pixs)) + 0.5
-			repetition_vector[x_init: x_end, y_init: y_end] += 1
+			new_img[0, x_start: x_end, y_start: y_end, 0] = \
+				np.zeros(shape = (x_end, pad_y_temp)) + 0.5
+			repetition_vector[x_start: x_end, y_start: y_end] += 1
 
 			new_prob = model.predict(new_img)[0][label]
 
-			if i > 3 or True:
-				print (new_prob, max_prob)
-				plt.clf()
-				plt.imshow(new_img[0].reshape(28, 28),
+			print (new_prob, max_prob)
+			plt.clf()
+			plt.imshow(new_img[0].reshape(28, 28),
 							cmap=plt.get_cmap('gray'))
-				plt.title(f"new{new_prob} - max {max_prob}")
-				plt.pause(0.00001)
-				plt.draw()
+			plt.title(f"new{new_prob} - max {max_prob}")
+			plt.pause(0.1)
+			plt.draw()
 
-			pixel_imps[x_init: x_end, y_init: y_end] += \
+			pixel_imps[x_start: x_end, y_start: y_end] += \
 				(max_prob - new_prob)
 				# (1-(max_prob - new_prob)/max_prob)
 				# (max_prob - new_prob)
+			pad_y_temp += pad_y
+		for j in range(1,padding_times):
+			x_start = 0
+			x_end = pad_x_temp
+			y_start = min(j*pad_y, 28-square)
+			y_end = min(j*pad_y+square, 28)
+			
+			new_img = img.copy()
 
-	pixel_imps = pixel_imps / repetition_vector
+			new_img[0, x_start: x_end, y_start: y_end, 0] = \
+				np.zeros(shape = (x_end, square)) + 0.5
+			repetition_vector[x_start: x_end, y_start: y_end] += 1
 
-	plt.ioff()
-	fig, ax = plt.subplots(1, 2)
-	ax[0].imshow(pixel_imps, cmap=plt.get_cmap('gray'))
-	ax[1].imshow(img[0].reshape(28, 28), cmap=plt.get_cmap('gray'))
-	plt.show()
- 
-	raise ValueError("Inside get_pixel_imporatnce")
+			new_prob = model.predict(new_img)[0][label]
+
+			print (new_prob, max_prob)
+			plt.clf()
+			plt.imshow(new_img[0].reshape(28, 28),
+							cmap=plt.get_cmap('gray'))
+			plt.title(f"new{new_prob} - max {max_prob}")
+			plt.pause(0.1)
+			plt.draw()
+
+			pixel_imps[x_start: x_end, y_start: y_end] += \
+				(max_prob - new_prob)
+				# (1-(max_prob - new_prob)/max_prob)
+				# (max_prob - new_prob)
+		pad_y_temp = pad_y
+		while pad_y_temp <= square:
+
+			x_start = 0
+			x_end = pad_x_temp
+			y_start = 28-square+pad_y_temp
+			y_end = 28
+
+			new_img = img.copy()
+
+			new_img[0, x_start: x_end, y_start: y_end, 0] = \
+				np.zeros(shape = (x_end, square-pad_y_temp)) + 0.5
+			repetition_vector[x_start: x_end, y_start: y_end] += 1
+
+			new_prob = model.predict(new_img)[0][label]
+
+			print (new_prob, max_prob)
+			plt.clf()
+			plt.imshow(new_img[0].reshape(28, 28),
+							cmap=plt.get_cmap('gray'))
+			plt.title(f"new{new_prob} - max {max_prob}")
+			plt.pause(0.1)
+			plt.draw()
+
+			pixel_imps[x_start: x_end, y_start: y_end] += \
+				(max_prob - new_prob)
+				# (1-(max_prob - new_prob)/max_prob)
+				# (max_prob - new_prob)
+			pad_y_temp += pad_y
+		pad_x_temp += pad_x
+		pad_y_temp = pad_y
