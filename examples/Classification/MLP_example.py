@@ -1,8 +1,6 @@
-import numpy as np
-import pandas as pd
 from sklearn.neural_network import MLPClassifier
 from ._load_data_for_classification import _load_data_for_classification
-from FIIL import FeatureImportanceAnalyzer
+from ._analyze import _analyze
 
 def MLP_example():
 
@@ -17,8 +15,4 @@ def MLP_example():
 	Model.fit(X_train,y_train)
 
 	# Feature importance analysis
-	fiil = FeatureImportanceAnalyzer(Model,
-									X_test,
-									y_test,
-									features = None)
-	print (fiil.get())
+	_analyze(Model, X_test, y_test, features = None)

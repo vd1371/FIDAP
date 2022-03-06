@@ -1,29 +1,39 @@
 from examples import *
+from examples.Classification import *
+from examples.Regression import *
 
 def run():
-	# RF_example()
-	#DNN_example()
+
+	# Classification examples
+	RF_example()
 	#KNN_example()
 	#LogR_example()
 	#SVC_example()
 	#MLP_example()
 	#DT_example()
-	#NB_example()
-	#DTR_example()
 	#ET_example()
-	#ETR_example()
 	#RN_example()
 	#PA_example()
-	#PAR_example() #this example works but gives negative R2 score value.
-	#XGB_example()
-	#SVR_example()
-	#GBR_example()
 	#GBC_example()
-	#LR_example()
 	#CBC_example()
+
+	# Regression examples
+	#DNN_example()
+	#DTR_example()
+	#ETR_example()
+	#GBR_example()
+	#LR_example()
+	#NB_example()
+	#PAR_example() #this example works but gives negative R2 score value.
+	#SVR_example()
+	#XGB_example()
+
+	# Clustering examples
 	#KMClst_example()
-	# MSClst_example()
-	DigitRecognition_example()
+	#MSClst_example()
+
+	# Image example
+	#DigitRecognition_example()
 
 
 if __name__ == "__main__":

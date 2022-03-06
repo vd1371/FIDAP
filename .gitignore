@@ -129,6 +129,7 @@ dmypy.json
 .pyre/
 
 # catboost_info
+catboost_info/
 examples/catboost_info/
 
 *.png
