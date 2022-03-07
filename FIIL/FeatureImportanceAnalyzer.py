@@ -18,6 +18,9 @@ class FeatureImportanceAnalyzer:
 		self.pred_fn = params.get("pred_fn", "predict")
 		self.direc = params.get("direc", '.')
 
+		raise ValueError("Please check n_feature_combination not bigger than n_features")
+		self.n_feature_combination = params.get("n_feature_combination", 2)
+
 	def get(self):
 		self.features_importance, self.features_importance_instances = \
 				get_features_importance(**self.__dict__)
