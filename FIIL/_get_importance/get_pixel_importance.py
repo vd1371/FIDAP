@@ -17,6 +17,13 @@ def get_pixel_importance(img, **params):
 	plt.ion()
 
 	pixs = 6
+	pad = 3
+
+
+	x_init = 
+
+
+	pixs = 6
 	square = 6
 	pad = 2
 	pad_x = 2
