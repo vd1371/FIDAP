@@ -5,7 +5,7 @@ from examples.Regression import *
 def run():
 
 	# Classification examples
-	RF_example()
+	#RF_example()
 	#KNN_example()
 	#LogR_example()
 	#SVC_example()
@@ -33,7 +33,7 @@ def run():
 	#MSClst_example()
 
 	# Image example
-	#DigitRecognition_example()
+	DigitRecognition_example()
 
 
 if __name__ == "__main__":
