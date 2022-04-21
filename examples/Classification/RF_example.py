@@ -29,8 +29,8 @@ def RF_example():
 
     # Feature importance analysis
     fidap = FeatureImportanceAnalyzer(Model, X_test, y_test,
-                                    n_feature_combination = 3,
-                                    n_simulations = 10)
+                                    n_feature_combination = 2,
+                                    n_simulations = 20)
     
     fidap.run()
 
