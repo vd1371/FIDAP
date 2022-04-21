@@ -8,4 +8,4 @@ def _summarize(**params):
 	df = pd.DataFrame.from_dict(features_importance_instances)
 	output = df.describe()
 
-	output.to_csv(f'{direc}/report.csv')
+	output.to_csv(f'{direc}/FIDAP_report.csv')

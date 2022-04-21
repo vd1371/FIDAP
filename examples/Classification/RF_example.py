@@ -5,8 +5,6 @@ from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 
 from FIDAP import FeatureImportanceAnalyzer
-
-from FIDAP import FeatureImportanceAnalyzer
 import pprint
 
 def RF_example():
@@ -30,11 +28,10 @@ def RF_example():
     Model.fit(X_train, y_train)
 
     # Feature importance analysis
-    FIDAP = FeatureImportanceAnalyzer(Model,
-                                    X_test,
-                                    y_test,
-                                    n_feature_combination = 2,
+    fidap = FeatureImportanceAnalyzer(Model, X_test, y_test,
+                                    n_feature_combination = 3,
                                     n_simulations = 10)
-    pprint.pprint(FIDAP.get())
-    FIDAP.boxplot()
-    FIDAP.summary()
+    
+    fidap.run()
+
+    print (fidap)

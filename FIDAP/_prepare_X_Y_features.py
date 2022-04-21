@@ -9,15 +9,21 @@ def _prepare_X_Y_features(model, X, Y, **params):
 		x_out = X.values
 	elif isinstance(X, list):
 		x_out = np.array(X)
-	else:
+	elif isinstance(X, np.ndarray):
 		x_out = X
+	else:
+		raise TypeError ("X must be pd.DataFrame, " + \
+							"list of lists, or numpy.ndarray")
 
 	if isinstance(Y, (pd.DataFrame, pd.Series)):
 		y_out = Y.values
 	elif isinstance(Y, list):
 		y_out = np.array(Y)
+	elif isinstance(Y, np.ndarray):
+		y_out = Y.reshape(-1)
 	else:
-		y_out = Y
+		raise TypeError("Y must be pd.DataFrame, pd.Series, 1D series, or " +\
+							"1d numpy array")
 
 	if features == None:
 		if isinstance(X, pd.DataFrame):

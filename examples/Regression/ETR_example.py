@@ -26,6 +26,10 @@ def ETR_example():
 	Model.fit(X_train, y_train)
 
 	# Feature importance analysis
-	FIDAP = FeatureImportanceAnalyzer(*args, **kwargs)
-	pprint.pprint(FIDAP.get())
+	FIDAP = FeatureImportanceAnalyzer(Model,
+                                    X_test,
+                                    y_test,
+                                    n_feature_combination = 2,
+                                    n_simulations = 20)
+	print (FIDAP.get())
 	FIDAP.boxplot()

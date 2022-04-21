@@ -1,14 +1,16 @@
-try:
-	import tensorflow.python.keras.engine.sequential as tf_models
-except:
-	import keras.engine.sequential as tf_models
-
-import tensorflow
-import sklearn
-import xgboost
-import catboost
 
 def _get_type_of_modelling(model):
+
+	try:
+		import tensorflow.python.keras.engine.sequential as tf_models
+	except:
+		import keras.engine.sequential as tf_models
+
+	import tensorflow
+	import sklearn
+	import xgboost
+	import catboost
+
 	if isinstance(model, 
 				(sklearn.linear_model._bayes.BayesianRidge,
 				sklearn.tree._classes.DecisionTreeRegressor,
