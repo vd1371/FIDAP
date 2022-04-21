@@ -9,7 +9,7 @@ import os
 
 os.environ["CUDA_VISIBLE_DEVICES"]= "-1"
 
-from FIIL import PixelImportanceAnalyzer
+from FIDAP import PixelImportanceAnalyzer
 
 def DigitRecognition_example():
     # loading dataset
@@ -23,8 +23,8 @@ def DigitRecognition_example():
 
     model = load_model('examples/MNIST.h5')
 
-    fiil = PixelImportanceAnalyzer(model)
-    fiil.get(X_test[2], Y_test[2])
+    FIDAP = PixelImportanceAnalyzer(model)
+    FIDAP.get(X_test[2], Y_test[2])
 
     raise ValueError ("Inside DigitRecognition_example")
 

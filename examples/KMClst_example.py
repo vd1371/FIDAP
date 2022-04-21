@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
-from FIIL import FeatureImportanceAnalyzer
+from FIDAP import FeatureImportanceAnalyzer
 
 def KMClst_example():
 
@@ -54,5 +54,5 @@ def KMClst_example():
 	n_features = X.shape[1]
 	n_simulations = 10
 	
-	fiil = FeatureImportanceAnalyzer(Model, file)
-	print (fiil.get())
+	FIDAP = FeatureImportanceAnalyzer(Model, file)
+	print (FIDAP.get())

@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.datasets import make_blobs
 from sklearn.cluster import MeanShift, estimate_bandwidth
 from sklearn.metrics import silhouette_score
-from FIIL import FeatureImportanceAnalyzer
+from FIDAP import FeatureImportanceAnalyzer
 
 def MSClst_example():
 
@@ -40,6 +40,6 @@ def MSClst_example():
 
 	n_simulations = 10
 
-	fiil = FeatureImportanceAnalyzer(Model, file)
+	FIDAP = FeatureImportanceAnalyzer(Model, file)
 
-	print (fiil.get())
+	print (FIDAP.get())

@@ -1,14 +1,27 @@
 from sklearn.ensemble import RandomForestClassifier
-from ._load_data_for_classification import _load_data_for_classification
-from ._analyze import _analyze
 
-from FIIL import FeatureImportanceAnalyzer
+import pandas as pd
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+
+from FIDAP import FeatureImportanceAnalyzer
+
+from FIDAP import FeatureImportanceAnalyzer
 import pprint
 
 def RF_example():
 
     # Loading dataset
-    X_train, X_test, y_train, y_test = _load_data_for_classification()
+    data = load_iris()
+
+    df = pd.DataFrame(data=data.data, columns=data.feature_names)
+    df['Y'] = data.target
+
+    X = df.iloc[: , :-1]
+    y = df.iloc[: , -1]
+
+    X_train, X_test, y_train, y_test = \
+        train_test_split(X, y,test_size=0.30)
 
     # Define model
     Model = RandomForestClassifier(n_estimators = 50)
@@ -17,11 +30,11 @@ def RF_example():
     Model.fit(X_train, y_train)
 
     # Feature importance analysis
-    fiil = FeatureImportanceAnalyzer(Model,
+    FIDAP = FeatureImportanceAnalyzer(Model,
                                     X_test,
                                     y_test,
                                     n_feature_combination = 2,
                                     n_simulations = 10)
-    pprint.pprint(fiil.get())
-    fiil.boxplot()
-    fiil.summary()
+    pprint.pprint(FIDAP.get())
+    FIDAP.boxplot()
+    FIDAP.summary()
