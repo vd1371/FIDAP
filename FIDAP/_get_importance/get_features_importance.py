@@ -41,8 +41,8 @@ def get_features_importance(**params):
 
 			ft_importance = round(np.mean(temp_metric_list), 4)
 
-			features_names = \
-				"-".join([features[i] for i in comb])
+			features_names = f"F{str(comb)}-" +\
+							 "-".join([features[i] for i in comb])
 
 			feature_importances[features_names] = ft_importance
 			feature_importances_instaces[features_names] = temp_metric_list[:]

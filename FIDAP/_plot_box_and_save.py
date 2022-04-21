@@ -7,14 +7,13 @@ def _plot_box_and_save(**params):
 	direc = params.get("direc")
 	output_fig_format = params.get("output_fig_format")
 
-	features_names = list(FIDAP_values_instances_dict.keys())
 	plt.rcParams['font.family'] = 'Times New Roman'
 
 	FIDAP_values_instances = list(FIDAP_values_instances_dict.values())
-	
-	Golden_ratio = (1 + np.sqrt(5))/2
 
-	fig_length = 4 * len(FIDAP_values_instances)
+	features_names = []
+	for i, feature in enumerate(FIDAP_values_instances_dict.keys()):
+		features_names.append(f"{feature[:min(len(feature), 20)]}")
 
 	fig = plt.figure()
 	plot = plt.boxplot(FIDAP_values_instances,
@@ -27,4 +26,4 @@ def _plot_box_and_save(**params):
 	plt.tight_layout()
 
 
-	fig.savefig(f'{direc}/Box_Output.{output_fig_format}', dpi=300)
+	fig.savefig(f'{direc}/Box_Output.{output_fig_format}')

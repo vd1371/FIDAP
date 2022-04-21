@@ -132,9 +132,14 @@ dmypy.json
 catboost_info/
 examples/catboost_info/
 
+
+
 main.py
 *.png
 *.tiff
 *.tif
 *.svg
 *.csv
+
+!resources/FlowChart.png
+!resources/Box_Output.tif
