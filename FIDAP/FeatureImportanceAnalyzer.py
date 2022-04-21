@@ -73,7 +73,7 @@ class FeatureImportanceAnalyzer:
 			number of features to be permutated for analysis
 			Default is 1 and max is len(features)
 
-		output_fig_format: str, default = 'tif'
+		output_fig_format: str, default = 'jpg'
 			the format of the figure to be saved, default is ".tif"
 
 
@@ -135,7 +135,7 @@ class FeatureImportanceAnalyzer:
 
 		self.n_feature_combination = min(params.get("n_feature_combination", 1),
 										len(self.features))
-		self.output_fig_format = params.get("output_fig_format", 'tif')
+		self.output_fig_format = params.get("output_fig_format", 'jpg')
 
 	def get(self):
 		self.features_importance, self.features_importance_instances = \
