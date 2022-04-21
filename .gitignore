@@ -136,3 +136,4 @@ examples/catboost_info/
 *.tiff
 *.tif
 *.svg
+*.csv

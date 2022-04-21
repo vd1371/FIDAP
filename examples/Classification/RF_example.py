@@ -2,6 +2,9 @@ from sklearn.ensemble import RandomForestClassifier
 from ._load_data_for_classification import _load_data_for_classification
 from ._analyze import _analyze
 
+from FIIL import FeatureImportanceAnalyzer
+import pprint
+
 def RF_example():
 
     # Loading dataset
@@ -14,4 +17,11 @@ def RF_example():
     Model.fit(X_train, y_train)
 
     # Feature importance analysis
-    _analyze(Model, X_test, y_test, features = None)
+    fiil = FeatureImportanceAnalyzer(Model,
+                                    X_test,
+                                    y_test,
+                                    n_feature_combination = 2,
+                                    n_simulations = 10)
+    pprint.pprint(fiil.get())
+    fiil.boxplot()
+    fiil.summary()

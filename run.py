@@ -2,10 +2,14 @@ from examples import *
 from examples.Classification import *
 from examples.Regression import *
 
+import matplotlib
+matplotlib.use('tkagg', force=True)
+
+
 def run():
 
 	# Classification examples
-	#RF_example()
+	# RF_example()
 	#KNN_example()
 	#LogR_example()
 	#SVC_example()

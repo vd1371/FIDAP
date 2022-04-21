@@ -22,4 +22,7 @@ def _get_metric_fn(model, **params):
 
 	elif isinstance(metric, str):
 		"https://scikit-learn.org/stable/modules/model_evaluation.html#scoring-parameter"
-		return sklearn.metrics.get_scorer(metric)
+		return sklearn.metrics.get_scorer(metric)._score_func
+
+	else:
+		raise TypeError("The metric parameters should be None, callable, or str")
