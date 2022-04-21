@@ -61,7 +61,8 @@ from FIDAP import FeatureImportanceAnalyzer
 ...                                    n_simulations = 10)
 >>> fidap.run()
 >>> print (fidap)
-
+```
+```
 Feature                                                                  FIDAP  
 --------------------------------------------------------------------------------
 F(0,)-sepal length (cm)                                                 -0.0200
