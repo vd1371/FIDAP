@@ -6,6 +6,7 @@
 Figure 1 presents the flowchart of the FIDAP method.
 
 ![](https://github.com/vd1371/FIDAP/blob/main/resources/FlowChart.png)
+
 _Figure 1: Flowchart of the FIDAP method_
 #
 # How to Use:
@@ -41,11 +42,13 @@ _Table 1: Some of the ML models that are used as examples_
 Using the FIDAP method for feature importance analysis, one can sort the feature of their ML model in order of importance. For example, Figure 2 represents the result of feature importance analysis for a RF model on the Iris dataset ![](https://archive.ics.uci.edu/ml/datasets/iris)(https://archive.ics.uci.edu/ml/datasets/iris). As it can be seen, the most critical feature of this model is the “petal length.” In other words, not incorporating this feature in the associated ML model would result in a significant model error. Conversely, not including the “sepal width” feature, which is the least important feature in the ML model, would lead to a minor error.
 
 ![](https://github.com/vd1371/FIDAP/blob/main/resources/Box_Output.jpg)
+
 _Figure 2: Feature importance analysis for an RF model on the Iris dataset_
 #
 Alongside developing the feature importance analysis model for regression, classification, and clustering models, a separate model for pixel importance analysis of images is developed. Although this module is at its embryonic stages, this model scores pixels according to their impact on the accuracy of the model. More specifically, if eliminating a pixel causes a considerable increase in model error, that pixel is highly important and vice versa. Figure 3 depicts the pixel importance analysis on digit 2 of the MNIST dataset. The whiter the dots in the right photo, the more critical they are. Black dots are of no importance, and eliminating them from the original image would have no impact on the result.
 
 ![](https://github.com/vd1371/FIDAP/blob/main/resources/Pixel-Importance.jpg)
+
 _Figure 3: Pixel importance analysis for a handwritten digit recognition model on the MNIST dataset_
 #
 
@@ -53,11 +56,30 @@ _Figure 3: Pixel importance analysis for a handwritten digit recognition model o
 ## Example
 ```python
 from FIDAP import FeatureImportanceAnalyzer
-fidap = FeatureImportanceAnalyzer(Model, X_test, y_test,
-                                    n_feature_combination = 3,
-                                    n_simulations = 10)
-fidap.run()
-print (fidap)
+>>> fidap = FeatureImportanceAnalyzer(Model, X_test, y_test,
+...                                    n_feature_combination = 3,
+...                                    n_simulations = 10)
+>>> fidap.run()
+>>> print (fidap)
+
+Feature                                                                  FIDAP  
+--------------------------------------------------------------------------------
+F(0,)-sepal length (cm)                                                 -0.0200
+F(1,)-sepal width (cm)                                                  -0.0089
+F(2,)-petal length (cm)                                                  0.1067
+F(3,)-petal width (cm)                                                   0.3000
+F(0, 1)-sepal length (cm)-sepal width (cm)                              -0.0378
+F(0, 2)-sepal length (cm)-petal length (cm)                              0.1711
+F(0, 3)-sepal length (cm)-petal width (cm)                               0.3489
+F(1, 2)-sepal width (cm)-petal length (cm)                               0.0911
+F(1, 3)-sepal width (cm)-petal width (cm)                                0.3067
+F(2, 3)-petal length (cm)-petal width (cm)                               0.5489
+F(0, 1, 2)-sepal length (cm)-sepal width (cm)-petal length (cm)          0.1311
+F(0, 1, 3)-sepal length (cm)-sepal width (cm)-petal width (cm)           0.4000
+F(0, 2, 3)-sepal length (cm)-petal length (cm)-petal width (cm)          0.6156
+F(1, 2, 3)-sepal width (cm)-petal length (cm)-petal width (cm)           0.5689
+--------------------------------------------------------------------------------
+
 ```
 
 
