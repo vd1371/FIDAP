@@ -23,19 +23,19 @@ Since it is still early to make this library a python package, we decided to suf
 Various ML models, as mentioned in Table 1, are used as examples to showcase the capability of the FIDAP method in feature importance analysis. However, due to the modularity and flexibility of the developed model, it can be expanded to be used for other types of ML models.
 
 _Table 1: Some of the ML models that are used as examples_
-| Classification | Regression | Clustering | Image Recognition |
+| Classification | Regression | Clustering |
 | ------ | ------ | ------ | ------ |
-| Random Forest | Linear Regression | Mean Shift | Handwritten Digit Recognition (MNIST Dataset) |
-| Support Vector | Support Vector | K Means | |
-| Multi-layer Perceptron | Deep Neural Net | | |
-| Decision Tree | Decision Tree | | |
-| Extra Trees | Extra Trees | | |
-| Radius Neighbors | Naïve Bayes | | |
-| Passive Aggressive | Passive Aggressive | | |
-| Gradient Boosting | Gradient Boosting | | |
-| Cat Boost | XG Boost | | |
-| K Nearest Neighbors |  | | |
-| Logistic Regression |  | | |
+| Random Forest | Linear Regression | Mean Shift |
+| Support Vector | Support Vector | K Means | 
+| Multi-layer Perceptron | Deep Neural Net | | 
+| Decision Tree | Decision Tree | | 
+| Extra Trees | Extra Trees | | 
+| Radius Neighbors | Naïve Bayes | | 
+| Passive Aggressive | Passive Aggressive | | 
+| Gradient Boosting | Gradient Boosting | | 
+| Cat Boost | XG Boost | | 
+| K Nearest Neighbors | | | 
+| Logistic Regression | | | 
 #
 
 # Results and Insights:

@@ -1,16 +1,14 @@
-from ._get_type_of_modelling import _get_type_of_modelling
 
-def _get_metric_fn(model, **params):
+
+def _get_metric_fn(model, modelling_type, **params):
 
 	metric = params.get("metric_fn")
 
-	if metric == None:
+	if metric is None:
 
 		from sklearn.metrics import accuracy_score
 		from sklearn.metrics import r2_score
 		from sklearn.metrics import silhouette_score
-
-		modelling_type = _get_type_of_modelling(model)
 
 		default_metrics = {'classification': accuracy_score,
 							'regression': r2_score,

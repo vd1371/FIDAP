@@ -1,3 +1,6 @@
+import pprint
+
+from ._get_type_of_modelling import _get_type_of_modelling
 from ._get_importance import get_features_importance
 from ._check_X_Y_type_and_shape import _check_X_Y_type_and_shape
 from ._prepare_X_Y_features import _prepare_X_Y_features
@@ -6,10 +9,13 @@ from ._plot_box_and_save import _plot_box_and_save
 from ._summarize import _summarize
 from ._get_string_report import _get_string_report
 
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
+
 
 class FeatureImportanceAnalyzer:
 
-	def __init__(self, model, X, Y = None, **params):
+	def __init__(self, model, X, Y=None, **params):
 		'''
 		Feature Importance by DAta Permutation
 
@@ -76,6 +82,8 @@ class FeatureImportanceAnalyzer:
 		output_fig_format: str, default = 'jpg'
 			the format of the figure to be saved, default is ".tif"
 
+		modelling_type: {regression, classification, clustering}, default = 'regression'
+
 
 		Attributes
 		----------
@@ -108,12 +116,12 @@ class FeatureImportanceAnalyzer:
 
 		Examples
 		----------
-		>>> from FIDAP import FeatureImportanceAnalyzer
-		>>> fidap = FeatureImportanceAnalyzer(Model, X_test, y_test,
-        ...                                   n_feature_combination = 3,
-        ...                                   n_simulations = 10)
-		>>> fidap.run()
-		>>> print (fidap)
+		from FIDAP import FeatureImportanceAnalyzer
+		fidap = FeatureImportanceAnalyzer(model, X_test, y_test,
+        ...                               n_feature_combination = 3,
+        ...                               n_simulations = 10)
+		fidap.run()
+		print (fidap)
 		Feature                              FIDAP  
 		--------------------------------------------
 		sepal length (cm)                    0.0000
@@ -122,24 +130,35 @@ class FeatureImportanceAnalyzer:
 		petal width (cm)                     0.1689
 		--------------------------------------------
 		'''
+
+
 		_check_X_Y_type_and_shape(X, Y)
 		
 		self.model = model
 		self.X, self.Y, self.features = \
 			_prepare_X_Y_features(model, X, Y, **params)
-		self.metric_fn = _get_metric_fn(model, **params)
+
+		self.modelling_type = params.get("modelling_type")
+		if self.modelling_type is None:
+			self.modelling_type = _get_type_of_modelling(model)
+
+		self.metric_fn = _get_metric_fn(model, self.modelling_type, **params)
 		self.n_simulations = max(params.get("n_simulations", 100), 10)
 		self.pred_fn = params.get("pred_fn", "predict")
 		self.direc = params.get("direc", '.')
 		self.verbose = params.get("verbose", False)
 
-		self.n_feature_combination = min(params.get("n_feature_combination", 1),
-										len(self.features))
+		self.n_feature_combination = min(params.get("n_feature_combination", 1), len(self.features))
 		self.output_fig_format = params.get("output_fig_format", 'jpg')
 
-	def get(self):
-		self.features_importance, self.features_importance_instances = \
-				get_features_importance(**self.__dict__)
+		self.features_importance = None
+		self.features_importance_instances = None
+
+	def get(self, verbose = False):
+		self.features_importance, self.features_importance_instances = get_features_importance(**self.__dict__)
+
+		if verbose:
+			pprint.pprint(self.features_importance)
 
 		return self.features_importance
 

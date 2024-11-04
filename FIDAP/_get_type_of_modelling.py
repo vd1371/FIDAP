@@ -1,6 +1,48 @@
 
 def _get_type_of_modelling(model):
 
+	regression_models = [
+		"Regressor",
+		"Regress",
+		"LinearRegression",
+		"DecisionTreeRegressor",
+		"ExtraTreesRegressor",
+		"SVR",
+		"BayesianRidge",
+	]
+
+	for reg in regression_models:
+		if reg.lower() in model.__str__().lower():
+			return 'regression'
+
+	classification_models = [
+		"Classifier",
+		"Classify",
+		"DecisionTreeClassifier",
+		"ExtraTreesClassifier",
+		"SVC",
+		"RandomForestClassifier",
+		"PassiveAggressiveClassifier",
+		"GradientBoostingClassifier",
+		"MLPClassifier",
+		"RadiusNeighborsClassifier",
+		"CatBoostClassifier",
+	]
+
+	for cls in classification_models:
+		if cls.lower() in model.__str__().lower():
+			return 'classification'
+
+	clustering_models = [
+		"KMeans",
+		"MeanShift",
+	]
+	for cls in clustering_models:
+		if cls.lower() in model.__str__().lower():
+			return 'clustering'
+
+	breakpoint()
+
 	try:
 		import tensorflow.python.keras.engine.sequential as tf_models
 	except:
