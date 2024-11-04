@@ -24,7 +24,7 @@ Various ML models, as mentioned in Table 1, are used as examples to showcase the
 
 _Table 1: Some of the ML models that are used as examples_
 | Classification | Regression | Clustering |
-| ------ | ------ | ------ | ------ |
+| ------ | ------ | ------ |
 | Random Forest | Linear Regression | Mean Shift |
 | Support Vector | Support Vector | K Means | 
 | Multi-layer Perceptron | Deep Neural Net | | 
@@ -44,12 +44,6 @@ Using the FIDAP method for feature importance analysis, one can sort the feature
 ![](https://github.com/vd1371/FIDAP/blob/main/resources/Box_Output.jpg)
 
 _Figure 2: Feature importance analysis for an RF model on the Iris dataset_
-#
-Alongside developing the feature importance analysis model for regression, classification, and clustering models, a separate model for pixel importance analysis of images is developed. Although this module is at its embryonic stages, this model scores pixels according to their impact on the accuracy of the model. More specifically, if eliminating a pixel causes a considerable increase in model error, that pixel is highly important and vice versa. Figure 3 depicts the pixel importance analysis on digit 2 of the MNIST dataset. The whiter the dots in the right photo, the more critical they are. Black dots are of no importance, and eliminating them from the original image would have no impact on the result.
-
-![](https://github.com/vd1371/FIDAP/blob/main/resources/Pixel-Importance.jpg)
-
-_Figure 3: Pixel importance analysis for a handwritten digit recognition model on the MNIST dataset_
 #
 
 
